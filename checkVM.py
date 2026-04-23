@@ -1,10 +1,6 @@
-import os
-
 import requests
-from pypykatz.commons.readers.local.common.defines import NULL
-from sympy import true
-from sympy.codegen.ast import continue_
-
+import requests.exceptions
+import os
 
 def checkCPU():
     # Comprobacion CPU
@@ -16,7 +12,7 @@ def checkCPU():
                     if "amd" in linea.lower() or "intel" in linea.lower():
                         return False
                     # el vendor ID no pertenece a una maquina física
-                    else: # no es una VM
+                    else:  # no es una VM
                         return True
 
     # Capturamos cualquier error de SO. Ya sea porque no existe el fichero, faltan permisos...
@@ -29,12 +25,14 @@ def checkCPU():
 
 
 
+
+
 def checkVMprocess():
     # Deteccion proceso gestion VMs
     # Para evisar crear subprocesos con llamadas de sistema lo miro directamente en los ficheros
     for proceso in os.listdir("/proc"):
 
-        if not proceso.isdigit(): # si el directorio no es un numero pasamos al siguiente, porque no es de un proceso
+        if not proceso.isdigit():  # si el directorio no es un numero pasamos al siguiente, porque no es de un proceso
             continue
 
         ruta = f'/proc/{proceso}'
@@ -52,15 +50,16 @@ def checkVMprocess():
 
         except PermissionError:
             print(f"Error al acceder al proceso ID={proceso}")
+            return False
 
 
     return False
 
 
-def checkVMserver():
 
+def checkVMserver():
     try:
-        response = requests.get('http://169.254.169.254', timeout=3)
+        response = requests.get('http://169.254.169.254', timeout=5)
         return True
 
     except requests.exceptions.RequestException:
