@@ -8,8 +8,8 @@ from executePayload import executePayload
 
 
 # PARAMETROS
-killswitch_URL = "https://gist.githubusercontent.com/apachete24/7202e9ccfa8b5008a12ce38563766081/raw/5f8b4866e06d149222552e3524761601c887d767/control"
-payload_URL = "https://gist.githubusercontent.com/apachete24/70b0c75e9870905b17342f80700e3c19/raw/8acc7e6730c3c5ffc25e33758333cfc14e5d0f22/foroSuperseguro.html"
+killswitch_URL = "REEMPLAZAR_KILL"
+payload_URL = "REEMPLAZAR_PAYLOAD"
 
 
 
