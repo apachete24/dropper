@@ -78,4 +78,11 @@ el directorio /dist que es el directorio que crea pyinstaller y elimino el resto
 Tuve algunos problemas hasta que entendí bien como funcionaban estas funciones y las librerías externas.
 
 
+DROPPER
+Si está activado el killswitch o se encuentra en una VM, termina la ejecución sin errores.
+if killswitch(killswitch_URL) or checkCPU() or checkVMprocess() or checkVMserver():
+    sys.exit(0)
+
+En caso contrario llama a executePayload(), lo descarga, y ejecuta reescribiendo el proceso del dropper.
+Si algo falla, termina sin errores.
 
