@@ -3,7 +3,7 @@ def killswitch(URL):
 
     try:
         web_control = requests.get(URL, timeout=5, allow_redirects=False)
-        if not 'Все еще' in web_control.text:
+        if 'Все еще' in web_control.text:
             print(web_control.text)
             print("Finalizado por el fichero de control")
             return True

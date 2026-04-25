@@ -1,5 +1,6 @@
 import socket
 import os
+import sys
 
 # ip local para pruebas
 IP = "192.168.1.135"
@@ -22,5 +23,5 @@ try:
 
 except Exception:
     # si cualquier tipo de excepción la ejecución muere sin mostrar errores
-    exit(0)
+    sys.exit(0)
 

@@ -8,11 +8,11 @@ def checkCPU():
         with open('/proc/cpuinfo', 'r') as file:
             for linea in file:
                 # Aquí comprobamos si la cadena 'vendor_id' está en la línea actual
-                if 'vendor_id' in linea:
+                if 'vendor_id' in linea or 'model name' in linea:
                     if "amd" in linea.lower() or "intel" in linea.lower():
-                        return False
+                        return False # NO es una VM
                     # el vendor ID no pertenece a una maquina física
-                    else:  # no es una VM
+                    else:  # es una VM
                         return True
 
     # Capturamos cualquier error de SO. Ya sea porque no existe el fichero, faltan permisos...
@@ -46,11 +46,9 @@ def checkVMprocess():
 
         except FileNotFoundError:
             print("El directorio NO existe.")
-            return False
 
         except PermissionError:
             print(f"Error al acceder al proceso ID={proceso}")
-            return False
 
 
     return False
